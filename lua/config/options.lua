@@ -5,6 +5,8 @@ opt.inccommand = "split"
 opt.smartcase = true
 opt.ignorecase = true
 
+opt.wrap = false
+
 opt.number = true
 opt.relativenumber = true
 
@@ -39,7 +41,7 @@ opt.updatetime = 50
 
 opt.splitright = true
 
-opt.spelllang = "en_us"
+--opt.spelllang = "en_us"
 opt.spell = true
 
 vim.filetype.add({ extension = { templ = "templ" } })

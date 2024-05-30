@@ -6,10 +6,12 @@ return {
 		dependencies = {
 			"onsails/lspkind.nvim",
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-buffer",
 			{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
-			"saadparwaiz1/cmp_luasnip",
+            "saadparwaiz1/cmp_luasnip",
+            'rafamadriz/friendly-snippets' ,
 		},
 		config = function()
 			--require("custom.completion")
@@ -32,8 +34,9 @@ return {
 					{ name = "buffer" },
 				},
 				mapping = {
-					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 					["<C-y>"] = cmp.mapping(
 						cmp.mapping.confirm({
 							behavior = cmp.ConfirmBehavior.Insert,
