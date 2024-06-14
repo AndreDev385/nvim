@@ -16,7 +16,6 @@ return {
 				"c",
 				"cpp",
 				"go",
-				"lua",
 				"python",
 				"rust",
 				"tsx",

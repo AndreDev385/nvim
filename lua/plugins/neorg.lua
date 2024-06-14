@@ -12,7 +12,6 @@ return {
 						icons = {
 							heading = {
 								enabled = true,
-
 								level_1 = {
 									enabled = true,
 									icon = "◉",
@@ -42,6 +41,14 @@ return {
 						default_workspace = "notes",
 					},
 				},
+				["core.keybinds"] = {
+					config = {
+						default_keybinds = true,
+						keybind_preset = "neorg",
+						neorg_leader = " ",
+					},
+				},
+				["core.summary"] = {},
 			},
 		})
 	end,

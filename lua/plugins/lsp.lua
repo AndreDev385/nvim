@@ -2,7 +2,6 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"folke/neodev.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -16,13 +15,6 @@ return {
 			"b0o/SchemaStore.nvim",
 		},
 		config = function()
-			require("neodev").setup({
-				-- library = {
-				--   plugins = { "nvim-dap-ui" },
-				--   types = true,
-				-- },
-			})
-
 			local capabilities = nil
 			if pcall(require, "cmp_nvim_lsp") then
 				capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -32,21 +24,6 @@ return {
 
 			local servers = {
 				bashls = true,
-				--dartls = {
-				--	cmd = { "dart", "language-server", "--protocol=lsp" },
-				--	settings = {
-				--		dart = {
-				--			analysisExcludedFolders = {
-				--				vim.fn.expand("$HOME/AppData/Local/Pub/Cache"),
-				--				vim.fn.expand("$HOME/.pub-cache"),
-				--				vim.fn.expand("$HOME/tools/flutter/"),
-				--			},
-				--			updateImportsOnRename = true,
-				--			completeFunctionCalls = true,
-				--			showTodos = true,
-				--		},
-				--	},
-				--},
 				gopls = {
 					settings = {
 						gopls = {
@@ -73,12 +50,8 @@ return {
 				cssls = true,
 
 				-- Probably want to disable formatting for this lang server
-				tsserver = {
-					server_capabilities = {
-						documentFormattingProvider = false,
-					},
-				},
-				--biome = true,
+				tsserver = true,
+				biome = true,
 				jsonls = {
 					settings = {
 						json = {
@@ -133,7 +106,6 @@ return {
 			end
 
 			lspconfig.dartls.setup({
-				on_attach = on_attach,
 				cmd = { "dart", "language-server", "--protocol=lsp" },
 				settings = {
 					dart = {

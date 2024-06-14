@@ -17,6 +17,12 @@ set("n", "]d", vim.diagnostic.goto_next)
 set("n", "[d", vim.diagnostic.goto_prev)
 
 set("n", "<leader>gs", vim.cmd.Git)
+set("n", "<leader>gvd", vim.cmd.Gvdiffsplit)
+set("n", "<leader>f", vim.lsp.buf.format)
 
 set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/init.lua<CR>")
 set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
+
+-- Rest Client
+set("n", "<leader>xr", ":call VrcQuery()<CR>")
+set("n", "<leader>rx", "<cmd>Rest run<CR>")
