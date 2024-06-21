@@ -1,4 +1,5 @@
 local set = vim.keymap.set
+local options = { noremap = true, silent = true }
 --local k = vim.keycode
 
 set("i", "<C-c>", "<Esc>")
