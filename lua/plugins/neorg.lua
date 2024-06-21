@@ -32,7 +32,6 @@ return {
 						},
 					},
 				},
-
 				["core.dirman"] = {
 					config = {
 						workspaces = {
@@ -49,6 +48,19 @@ return {
 					},
 				},
 				["core.summary"] = {},
+				["core.tempus"] = {},
+				["core.presenter"] = {
+					config = {
+						zen_mode = "zen-mode",
+					},
+				},
+				["core.integrations.treesitter"] = {
+					config = {
+						configure_parsers = true,
+						install_parsers = true,
+					},
+				},
+				["core.ui.calendar"] = {},
 			},
 		})
 	end,

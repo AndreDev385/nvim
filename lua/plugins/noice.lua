@@ -1,5 +1,6 @@
 return {
 	"folke/noice.nvim",
+	event = "VeryLazy",
 	config = function()
 		require("noice").setup({
 			-- add any options here
@@ -17,10 +18,9 @@ return {
 					},
 					opts = { skip = true },
 				},
-				--{
-				--	view = "notify",
-				--	filter = { event = "msg_showmode" },
-				--},
+			},
+			cmdline = {
+				view = "cmdline",
 			},
 		})
 	end,
