@@ -23,7 +23,10 @@ return {
 			local lspconfig = require("lspconfig")
 
 			local servers = {
+				astro = true,
 				bashls = true,
+				marksman = true,
+				hls = true,
 				gopls = {
 					settings = {
 						gopls = {
@@ -44,14 +47,23 @@ return {
 						semanticTokensProvider = vim.NIL,
 					},
 				},
-				rust_analyzer = true,
+				emmet_ls = true,
+				html = true,
 				svelte = true,
 				templ = true,
 				cssls = true,
-
 				-- Probably want to disable formatting for this lang server
-				tsserver = true,
-				biome = true,
+				ts_ls = true,
+				tailwindcss = true,
+				kotlin_language_server = {
+					cmd_env = { JAVA_HOME = "/usr/lib/jvm/java-22-openjdk/" },
+				},
+				eslint = true,
+				biome = {
+					default_config = {
+						root_dir = [[root_pattern('biome.json', 'biome.jsonc')]],
+					},
+				},
 				jsonls = {
 					settings = {
 						json = {
@@ -60,7 +72,6 @@ return {
 						},
 					},
 				},
-
 				yamlls = {
 					settings = {
 						yaml = {
@@ -88,7 +99,6 @@ return {
 				"stylua",
 				"lua_ls",
 				"delve",
-				-- "tailwind-language-server",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)
@@ -137,6 +147,10 @@ return {
 
 					local builtin = require("telescope.builtin")
 
+					vim.diagnostic.config({
+						float = { border = "single" },
+					})
+
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
 					vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0 })
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
@@ -170,6 +184,11 @@ return {
 			require("conform").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
+					json = { "jq" },
+					typescript = { { "prettierd", "prettier", "biome" } },
+					typescriptreact = { { "prettierd", "prettier", "biome" } },
+					javascript = { { "prettierd", "prettier", "biome" } },
+					javascriptreact = { { "prettierd", "prettier", "biome" } },
 				},
 			})
 

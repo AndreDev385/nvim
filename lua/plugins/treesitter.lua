@@ -13,6 +13,7 @@ return {
 		configs.setup({
 			-- Add languages to be installed here that you want installed for treesitter
 			ensure_installed = {
+				"http",
 				"c",
 				"cpp",
 				"go",

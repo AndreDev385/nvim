@@ -21,4 +21,3 @@ require("lazy").setup({ import = "plugins" }, {
 require("config.keymaps")
 require("config.options")
 require("colors.colorscheme")
-require("completion")

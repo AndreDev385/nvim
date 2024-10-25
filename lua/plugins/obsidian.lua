@@ -1,7 +1,7 @@
 return {
 	"epwalsh/obsidian.nvim",
 	version = "*",
-	lazy = true,
+	lazy = false,
 	ft = "markdown",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -10,22 +10,24 @@ return {
 		require("obsidian").setup({
 			workspaces = {
 				{
-					name = "notes",
-					path = "~/notes",
-				},
+					name = "obsidian",
+					path = "/home/andre/obsidian",
+				}
 			},
-			notes_subdir = "",
-			log_level = vim.log.levels.INFO,
+			notes_subdir = "inbox",
 			daily_notes = {
-				-- Optional, if you keep daily notes in a separate directory.
-				folder = "notes/dailies",
-				-- Optional, if you want to change the date format for the ID of daily notes.
+				folder = "daily",
 				date_format = "%Y-%m-%d",
-				-- Optional, if you want to change the date format of the default alias of daily notes.
 				alias_format = "%B %-d, %Y",
-				-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-				template = nil,
+				default_tags = { "daily-notes" },
+				template = "daily"
 			},
+			templates = {
+				subdir = "templates",
+				date_format = "%Y-%m-%d",
+				time_format = "%H:%M:%S",
+			},
+			log_level = vim.log.levels.INFO,
 			completion = {
 				-- Set to false to disable completion.
 				nvim_cmp = true,
@@ -39,13 +41,6 @@ return {
 						return require("obsidian").util.gf_passthrough()
 					end,
 					opts = { noremap = false, expr = true, buffer = true },
-				},
-				-- Toggle check-boxes.
-				["<leader>ch"] = {
-					action = function()
-						return require("obsidian").util.toggle_checkbox()
-					end,
-					opts = { buffer = true },
 				},
 				-- Smart action depending on context, either follow link or toggle checkbox.
 				["<cr>"] = {

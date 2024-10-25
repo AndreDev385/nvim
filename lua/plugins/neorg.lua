@@ -63,6 +63,12 @@ return {
 				["core.ui.calendar"] = {},
 			},
 		})
+		vim.keymap.set("n", "<leader>td", "<Plug>(neorg.qol.todo-items.todo.task-done)", {})
+		vim.keymap.set("n", "<leader>tu", "<Plug>(neorg.qol.todo-items.todo.task-undone)", {})
+		vim.keymap.set("n", "<leader>tc", "<Plug>(neorg.qol.todo-items.todo.task-cancel)", {})
+		vim.keymap.set("n", "<leader>tr", "<Plug>(neorg.qol.todo-items.todo.task-repeat)", {})
 	end,
 	run = ":Neorg sync-parsers",
+
+
 }
