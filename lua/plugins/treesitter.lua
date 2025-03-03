@@ -7,6 +7,10 @@ return {
 		local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 		ts_update()
 	end,
+	dependencies = {
+		-- NOTE: additional parser
+		{ "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
+	},
 	config = vim.defer_fn(function()
 		local configs = require("nvim-treesitter.configs")
 

@@ -11,14 +11,14 @@ function M.setup()
 		ext_opts = {
 			[types.choiceNode] = {
 				active = {
-					virt_text = { { "<- Choice", "Error" } }
-				}
-			}
-		}
+					virt_text = { { "<- Choice", "Error" } },
+				},
+			},
+		},
 	})
 
 	for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/snippets/*.lua", true)) do
-		loadfile(ft_path)
+		loadfile(ft_path)()
 	end
 
 	-- Keymaps for jumping

@@ -27,6 +27,7 @@ return {
 				bashls = true,
 				marksman = true,
 				hls = true,
+				zls = true,
 				gopls = {
 					settings = {
 						gopls = {
@@ -42,12 +43,15 @@ return {
 						},
 					},
 				},
+				pyright = true,
 				lua_ls = {
 					server_capabilities = {
 						semanticTokensProvider = vim.NIL,
 					},
 				},
-				emmet_ls = true,
+				emmet_ls = {
+					filetypes = { "html", "typescriptreact", "javascriptreact", "svelte", "vue", "templ" },
+				},
 				html = true,
 				svelte = true,
 				templ = true,
@@ -131,6 +135,8 @@ return {
 				},
 			})
 
+			lspconfig.gdscript.setup {}
+
 			local disable_semantic_tokens = {
 				lua = true,
 			}
@@ -181,16 +187,16 @@ return {
 			})
 
 			-- Autoformatting Setup
-			require("conform").setup({
-				formatters_by_ft = {
-					lua = { "stylua" },
-					json = { "jq" },
-					typescript = { { "prettierd", "prettier", "biome" } },
-					typescriptreact = { { "prettierd", "prettier", "biome" } },
-					javascript = { { "prettierd", "prettier", "biome" } },
-					javascriptreact = { { "prettierd", "prettier", "biome" } },
-				},
-			})
+			--require("conform").setup({
+			--	formatters_by_ft = {
+			--		lua = { "stylua" },
+			--		json = { "jq" },
+			--		typescript = { { "prettierd", "prettier", "biome" } },
+			--		typescriptreact = { { "prettierd", "prettier", "biome" } },
+			--		javascript = { { "prettierd", "prettier", "biome" } },
+			--		javascriptreact = { { "prettierd", "prettier", "biome" } },
+			--	},
+			--})
 
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				callback = function(args)

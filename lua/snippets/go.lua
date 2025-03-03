@@ -1,15 +1,11 @@
 local ls = require("luasnip")
-
 local s = ls.snippet
 local i = ls.insert_node
 
 local fmt = require("luasnip.extras.fmt").fmt
 
 local snippets = {
-	s("prt", fmt('println!("{}", {})', { i(1), i(0) })),
+	s("iferr", fmt("if err != nil {{\n\t{}\n}}", { i(1, "body") })),
 }
 
-return {
-	filetype = "rust",
-	snippets,
-}
+ls.add_snippets("go", snippets)

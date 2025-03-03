@@ -1,7 +1,3 @@
---require("lua.config.snippets")
---vim.opt.completeopt = { "menu", "menuone", "noselect" }
---vim.opt.shortmess:append "c"
-
 local lspkind = require("lspkind")
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -27,9 +23,9 @@ function M.setup()
 			documentation = cmp.config.window.bordered(),
 		},
 		sources = {
+			{ name = "luasnip" },
 			{ name = "nvim_lsp" },
 			{ name = "path" },
-			{ name = "luasnip" },
 			{ name = "buffer" },
 			{ name = "supermaven" },
 		},
@@ -68,7 +64,7 @@ function M.setup()
 		},
 	})
 
-	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 	cmp.setup.filetype("gitcommit", {
 		sources = cmp.config.sources({
