@@ -44,11 +44,7 @@ return {
 					},
 				},
 				pyright = true,
-				lua_ls = {
-					server_capabilities = {
-						semanticTokensProvider = vim.NIL,
-					},
-				},
+				lua_ls = true,
 				emmet_ls = {
 					filetypes = { "html", "typescriptreact", "javascriptreact", "svelte", "vue", "templ" },
 				},
@@ -135,7 +131,7 @@ return {
 				},
 			})
 
-			lspconfig.gdscript.setup {}
+			lspconfig.gdscript.setup({})
 
 			local disable_semantic_tokens = {
 				lua = true,
@@ -186,17 +182,13 @@ return {
 				end,
 			})
 
-			-- Autoformatting Setup
-			--require("conform").setup({
-			--	formatters_by_ft = {
-			--		lua = { "stylua" },
-			--		json = { "jq" },
-			--		typescript = { { "prettierd", "prettier", "biome" } },
-			--		typescriptreact = { { "prettierd", "prettier", "biome" } },
-			--		javascript = { { "prettierd", "prettier", "biome" } },
-			--		javascriptreact = { { "prettierd", "prettier", "biome" } },
-			--	},
-			--})
+			--Autoformatting Setup
+			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					json = { "jq" },
+				},
+			})
 
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				callback = function(args)

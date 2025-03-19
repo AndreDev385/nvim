@@ -12,7 +12,7 @@ return {
 				{
 					name = "obsidian",
 					path = "/home/andre/obsidian",
-				}
+				},
 			},
 			notes_subdir = "inbox",
 			daily_notes = {
@@ -20,7 +20,7 @@ return {
 				date_format = "%Y-%m-%d",
 				alias_format = "%B %-d, %Y",
 				default_tags = { "daily-notes" },
-				template = "daily"
+				template = "daily",
 			},
 			templates = {
 				subdir = "templates",
