@@ -1,9 +1,35 @@
 return {
 	"mistweaverco/kulala.nvim",
 	opts = {},
-	config = function()
-		vim.keymap.set("n", "<leader>rx", "<cmd>lua require('kulala').run()<cr>")
-		vim.keymap.set("n", "<leader>p", "<cmd>lua require('kulala').jump_prev()<cr>")
-		vim.keymap.set("n", "<leader>n", "<cmd>lua require('kulala').jump_next()<cr>")
-	end,
+	ft = { "http", "rest" },
+	keys = {
+		{
+			"<leader>rx",
+			function()
+				require("kulala").run()
+			end,
+			desc = "Send request",
+		},
+		{
+			"<leader>ra",
+			function()
+				require("kulala").run_all()
+			end,
+			desc = "Send all requests",
+		},
+		{
+			"<leader>p",
+			function()
+				require("kulala").jump_prev()
+			end,
+			desc = "Jump to prev request",
+		},
+		{
+			"<leader>n",
+			function()
+				require("kulala").jump_next()
+			end,
+			desc = "Jump to next request",
+		},
+	},
 }

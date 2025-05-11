@@ -67,7 +67,6 @@ return {
 				{ desc = "[S]earch by [G]rep" },
 			},
 			{
-
 				"<leader>sd",
 				function()
 					require("telescope.builtin").diagnostics()
@@ -82,7 +81,7 @@ return {
 
 			local layout_config = {
 				height = 0.6,
-				width = 0.4,
+				width = 0.5,
 			}
 
 			telescope.setup({

@@ -5,7 +5,7 @@ local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
 
 local snippets = {
-	s("log", fmt("console.log({{{}}})", { i(1, "log") })),
+	s("cl", fmt("console.log({})", { i(1, "log") })),
 	s(
 		"if",
 		fmt(
@@ -54,7 +54,42 @@ local snippets = {
 	),
 }
 
+local react_snippets = {
+	s(
+		"rdfc",
+		fmt(
+			[[
+			export default function {}() {{
+				return (
+					<div>
+						<h1>{}</h1>
+					</div>
+				)
+			}}
+			]],
+			{ i(1, "Component"), i(2, "body") }
+		)
+	),
+	s(
+		"rfc",
+		fmt(
+			[[
+			export function {}() {{
+				return (
+					<div>
+						<h1>{}</h1>
+					</div>
+				)
+			}}
+			]],
+			{ i(1, "Component"), i(2, "body") }
+		)
+	),
+}
+
 ls.add_snippets("javascript", snippets)
 ls.add_snippets("typescript", snippets)
 ls.add_snippets("javascriptreact", snippets)
 ls.add_snippets("typescriptreact", snippets)
+ls.add_snippets("javascriptreact", react_snippets)
+ls.add_snippets("typescriptreact", react_snippets)
