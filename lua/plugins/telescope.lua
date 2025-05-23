@@ -12,68 +12,68 @@ return {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			"nvim-telescope/telescope-ui-select.nvim",
 		},
-		keys = {
-			{
-				"<leader>sf",
-				function()
-					require("telescope.builtin").find_files({ hidden = true })
-				end,
-				desc = "[S]earch [F]iles",
-			},
-			{
-				"<leader>sb",
-				function()
-					require("telescope.builtin").buffers()
-				end,
-				desc = "[ ] Find existing buffers",
-			},
-			{
-				"<leader>/",
-				function()
-					-- You can pass additional configuration to telescope to change theme, layout, etc.
-					require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-						winblend = 10,
-						previewer = false,
-					}))
-				end,
-				desc = "[/] Fuzzily search in current buffer",
-			},
-			{
-				"<leader>ss",
-				function()
-					require("telescope.builtin").builtin()
-				end,
-				{ desc = "[S]earch [S]elect Telescope" },
-			},
-			{
-				"<leader>gf",
-				function()
-					require("telescope.builtin").git_files()
-				end,
-				desc = "Search [G]it [F]iles",
-			},
-			{
-				"<leader>sh",
-				function()
-					require("telescope.builtin").help_tags()
-				end,
-				desc = "[S]earch [H]elp",
-			},
-			{
-				"<leader>sg",
-				function()
-					require("telescope").extensions.live_grep_args.live_grep_args()
-				end,
-				{ desc = "[S]earch by [G]rep" },
-			},
-			{
-				"<leader>sd",
-				function()
-					require("telescope.builtin").diagnostics()
-				end,
-				desc = "[S]earch [D]iagnostics",
-			},
-		},
+		--keys = {
+		--	{
+		--		"<leader>sf",
+		--		function()
+		--			require("telescope.builtin").find_files({ hidden = true })
+		--		end,
+		--		desc = "[S]earch [F]iles",
+		--	},
+		--	{
+		--		"<leader>sb",
+		--		function()
+		--			require("telescope.builtin").buffers()
+		--		end,
+		--		desc = "[ ] Find existing buffers",
+		--	},
+		--	{
+		--		"<leader>/",
+		--		function()
+		--			-- You can pass additional configuration to telescope to change theme, layout, etc.
+		--			require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		--				winblend = 10,
+		--				previewer = false,
+		--			}))
+		--		end,
+		--		desc = "[/] Fuzzily search in current buffer",
+		--	},
+		--	{
+		--		"<leader>ss",
+		--		function()
+		--			require("telescope.builtin").builtin()
+		--		end,
+		--		{ desc = "[S]earch [S]elect Telescope" },
+		--	},
+		--	{
+		--		"<leader>gf",
+		--		function()
+		--			require("telescope.builtin").git_files()
+		--		end,
+		--		desc = "Search [G]it [F]iles",
+		--	},
+		--	{
+		--		"<leader>sh",
+		--		function()
+		--			require("telescope.builtin").help_tags()
+		--		end,
+		--		desc = "[S]earch [H]elp",
+		--	},
+		--	{
+		--		"<leader>sg",
+		--		function()
+		--			require("telescope").extensions.live_grep_args.live_grep_args()
+		--		end,
+		--		{ desc = "[S]earch by [G]rep" },
+		--	},
+		--	{
+		--		"<leader>sd",
+		--		function()
+		--			require("telescope.builtin").diagnostics()
+		--		end,
+		--		desc = "[S]earch [D]iagnostics",
+		--	},
+		--},
 		config = function()
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")

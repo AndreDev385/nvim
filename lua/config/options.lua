@@ -19,11 +19,22 @@ opt.rnu = true
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
-opt.scrolloff = 8
+opt.expandtab = true
+
+opt.scrolloff = 4
 opt.smartindent = true
 opt.wrap = true
 -- folds
-opt.foldmethod = "indent"
+vim.o.foldlevel = 99
+vim.o.foldcolumn = "1"
+vim.wo.foldnestmax = 1
+vim.wo.foldminlines = 1
+vim.o.foldenable = true
+vim.o.foldlevelstart = 99
+vim.o.foldtext = "" --[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g')]]
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.fillchars = [[eob: ,fold: ,foldopen: ,foldsep: ,foldclose: ]]
 
 opt.swapfile = false
 opt.backup = false

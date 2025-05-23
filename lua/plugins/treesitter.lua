@@ -30,8 +30,13 @@ return {
 				"vim",
 				"bash",
 				"templ",
+				"markdown",
+				"markdown_inline",
 			},
-
+			folds = {
+				enable = true, -- Habilita el plegado basado en treesitter
+				disable = { "help" }, -- Puedes deshabilitarlo para ciertos tipos de archivo si lo deseas
+			},
 			auto_install = false,
 			sync_install = false,
 			ignore_install = {},

@@ -14,6 +14,10 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+vim.diagnostic.config({
+	virtual_text = true,
+})
+
 require("lazy").setup({ import = "plugins" }, {
 	change_detection = { notify = false },
 })
