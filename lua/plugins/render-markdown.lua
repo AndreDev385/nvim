@@ -16,12 +16,12 @@ return {
 			enabled = true,
 			position = "inline",
 			unchecked = {
-				icon = "   󰄱 ",
+				icon = "󰄱 ",
 				highlight = "RenderMarkdownUnchecked",
 				scope_highlight = nil,
 			},
 			checked = {
-				icon = "   󰱒 ",
+				icon = "󰱒 ",
 				highlight = "RenderMarkdownChecked",
 				scope_highlight = nil,
 			},
