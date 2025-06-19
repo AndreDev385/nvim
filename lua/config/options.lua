@@ -33,7 +33,7 @@ vim.o.foldenable = true
 vim.o.foldlevelstart = 99
 vim.o.foldtext = "" --[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g')]]
 vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.fillchars = [[eob: ,fold: ,foldopen: ,foldsep: ,foldclose: ]]
 
 opt.swapfile = false

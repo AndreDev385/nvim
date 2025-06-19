@@ -15,6 +15,7 @@ return {
 		"typescriptreact",
 		"vue",
 		"htmlangular",
+		"templ",
 	},
 	root_makers = { ".git" },
 }

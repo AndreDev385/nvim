@@ -30,6 +30,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.lsp.enable({
+	"templ",
 	-- javascript
 	"astro",
 	"biome",
