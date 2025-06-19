@@ -9,7 +9,7 @@ return {
 
 		local fmt = require("luasnip.extras.fmt").fmt
 
-		local snippets = {
+		local javascript_snippets = {
 			s({ trig = "cl", name = "console.log" }, fmt("console.log({})", { i(1, "log") })),
 			s(
 				"if",
@@ -92,14 +92,45 @@ return {
 			),
 		}
 
-		ls.add_snippets("javascript", snippets)
-		ls.add_snippets("typescript", snippets)
-		ls.add_snippets("javascriptreact", snippets)
-		ls.add_snippets("typescriptreact", snippets)
+		local go_snippets = {
+			s(
+				"fun",
+				fmt(
+					[[func {}({}){{
+	{}
+}}]],
+					{ i(1, "name"), i(2, "params"), i(3, "body") }
+				)
+			),
+			s(
+				"ife",
+				fmt(
+					[[if err != nil {{
+	return err
+}}
+{}]],
+					{ i(0) }
+				)
+			),
+			s(
+				"for",
+				fmt(
+					[[for key, value := range {} {{
+	{}
+}}]],
+					{ i(1, "list"), i(0, "body") }
+				)
+			),
+		}
+
+		ls.add_snippets("javascript", javascript_snippets)
+		ls.add_snippets("typescript", javascript_snippets)
+		ls.add_snippets("javascriptreact", javascript_snippets)
+		ls.add_snippets("typescriptreact", javascript_snippets)
 		ls.add_snippets("javascriptreact", react_snippets)
 		ls.add_snippets("typescriptreact", react_snippets)
+		ls.add_snippets("go", go_snippets)
 
 		return opts
-	end
-
+	end,
 }

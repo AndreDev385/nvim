@@ -2,13 +2,18 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	---@type snacks.Config
 	opts = {
-		dashboard = { enabled = true }, -- entry pane
-		image = { enabled = true }, -- image preview
-		--indent = { enabled = true }, -- indent lines
-		input = { enabled = true }, --
-		scope = { enable = true },
+		animate = { enabled = true },
+		bigfile = { enabled = true },
+		bufdelete = { enabled = true },
+		dashboard = { enabled = true },
+		gitbrowse = { enabled = true },
+		image = { enabled = true },
+		indent = { enabled = true },
+		input = { enabled = true },
+		notifier = { enabled = true },
+		quickfile = { enabled = true },
+		scope = { enabled = true },
 		scroll = {
 			enabled = true,
 			animate = {
@@ -17,6 +22,7 @@ return {
 		},
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
+		zen = { enabled = true },
 		picker = {
 			enabled = true,
 			sort = {
@@ -24,29 +30,6 @@ return {
 			},
 			debug = {
 				scores = false,
-			},
-			layout = {
-				preset = "ivy",
-			},
-			layouts = {
-				ivy = {
-					layout = {
-						box = "vertical",
-						backdrop = false,
-						row = -1,
-						width = 0,
-						height = 0.6,
-						border = "top",
-						title = "{title} {live} {flags}",
-						title_pos = "left",
-						{ win = "input", height = 1, border = "bottom" },
-						{
-							box = "horizontal",
-							{ win = "list", border = "none" },
-							{ win = "preview", title = "{preview}", width = 0.5, border = "left" },
-						},
-					},
-				},
 			},
 			matcher = {
 				frecency = true,
@@ -94,25 +77,26 @@ return {
 			desc = "[ ] Find existing buffers",
 		},
 		{
+			"<leader>sg",
+			function()
+				-- You can pass additional configuration to telescope to change theme, layout, etc.
+				Snacks.picker.grep()
+			end,
+			desc = "[/] Fuzzily search in current buffer",
+		},
+		{
+			"<leader>ss",
+			function()
+				Snacks.picker()
+			end,
+			{ desc = "[S]earch [S]elect Telescope" },
+		},
+		{
 			"<leader>gf",
 			function()
 				Snacks.picker.git_files()
 			end,
 			desc = "Search [G]it [F]iles",
-		},
-		{
-			"<leader>gl",
-			function()
-				Snacks.picker.git_log()
-			end,
-			desc = "Search [G]it [L]og",
-		},
-		{
-			"<leader>gb",
-			function()
-				Snacks.picker.git_branches()
-			end,
-			desc = "Search [G]it [B]ranches",
 		},
 		{
 			"<leader>sh",
@@ -122,13 +106,6 @@ return {
 			desc = "[S]earch [H]elp",
 		},
 		{
-			"<leader>sg",
-			function()
-				Snacks.picker.grep()
-			end,
-			{ desc = "[S]earch by [G]rep" },
-		},
-		{
 			"<leader>sd",
 			function()
 				Snacks.picker.diagnostics()
@@ -136,11 +113,18 @@ return {
 			desc = "[S]earch [D]iagnostics",
 		},
 		{
-			"<leader>sk",
+			"<leader>bd",
 			function()
-				Snacks.picker.keymaps()
+				Snacks.bufdelete()
 			end,
-			desc = "[S]earch [K]eymaps",
+			desc = "Delete Buffer",
+		},
+		{
+			"<leader>z",
+			function()
+				Snacks.zen()
+			end,
+			desc = "Toggle Zen Mode",
 		},
 	},
 }

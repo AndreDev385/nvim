@@ -3,18 +3,13 @@ return {
 	dependencies = { "nvim-treesitter/nvim-treesitter" },
 	enabled = true,
 	---@module 'render-markdown'
-	---@type render.md.UserConfig
 	opts = {
-		anti_conceal = {
-			ignore = { head_icons = true },
-		},
 		completions = { blink = { enabled = true } },
 		bullet = {
 			enabled = true,
 		},
 		checkbox = {
 			enabled = true,
-			position = "inline",
 			unchecked = {
 				icon = "󰄱 ",
 				highlight = "RenderMarkdownUnchecked",

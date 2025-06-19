@@ -1,19 +1,69 @@
 return {
 	"scalameta/nvim-metals",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
 	ft = { "scala", "sbt", "java" },
 	opts = function()
 		local metals_config = require("metals").bare_config()
+
 		metals_config.on_attach = function(client, bufnr)
-			-- your on_attach function
+			require("metals").setup_dap()
+			local builtin = require("telescope.builtin")
+
+			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+			vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+
+			vim.keymap.set("n", "gr", builtin.lsp_references)
+			vim.keymap.set("n", "K", vim.lsp.buf.hover)
+			vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename)
+			vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action)
+
+			vim.keymap.set("n", "<leader>mc", function()
+				require("telescope").extensions.metals.commands()
+			end)
 		end
+
+		-- Reduce verbosity of messages
+		metals_config.settings = {
+			metals = {
+				serverProperties = {
+					"-Dmetals.log-level=error", -- Use error level to reduce verbosity
+				},
+				icons = {
+					error = "",
+					warn = "",
+					info = "",
+					debug = "",
+					trace = "",
+				},
+			},
+		}
+
+		-- Suppress status notifications
+		metals_config.init_options = {
+			statusBarProvider = "off", -- Disable status bar updates
+			isHttpEnabled = true,
+			compilerOptions = {
+				snippetAutoIndent = true,
+			},
+		}
 
 		return metals_config
 	end,
 	config = function(self, metals_config)
 		local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+
+		-- Disable LSP progress messages
+		vim.api.nvim_create_autocmd("LspProgress", {
+			callback = function(ev)
+				-- Filter out Metals progress messages
+				if ev.data.client_id and vim.lsp.get_client_by_id(ev.data.client_id).name == "metals" then
+					return true -- Suppress the message
+				end
+			end,
+			group = nvim_metals_group,
+		})
+
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = self.ft,
 			callback = function()

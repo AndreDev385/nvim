@@ -33,6 +33,7 @@ set("n", "<leader>qc", "<cmd>cclose<CR>")
 set("n", "<leader>gs", vim.cmd.Git)
 set("n", "<leader>gvd", vim.cmd.Gvdiffsplit)
 set("n", "<leader>f", vim.lsp.buf.format)
+set("n", "<leader>w", "<cmd>:w<CR>")
 
 set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/init.lua<CR>")
 set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
@@ -136,10 +137,6 @@ local function fold_markdown_headings(levels)
 	vim.fn.winrestview(saved_view)
 end
 
--- HACK: Fold markdown headings in Neovim with a keymap
--- https://youtu.be/EYczZLNEnIY
---
--- Keymap for folding markdown headings of level 1 or above
 vim.keymap.set("n", "zj", function()
 	-- "Update" saves only if the buffer has been modified since the last save
 	vim.cmd("silent update")
@@ -152,11 +149,6 @@ vim.keymap.set("n", "zj", function()
 	vim.cmd("normal! zz") -- center the cursor line on screen
 end, { desc = "[P]Fold all headings level 1 or above" })
 
--- HACK: Fold markdown headings in Neovim with a keymap
--- https://youtu.be/EYczZLNEnIY
---
--- Keymap for folding markdown headings of level 2 or above
--- I know, it reads like "madafaka" but "k" for me means "2"
 vim.keymap.set("n", "zk", function()
 	-- "Update" saves only if the buffer has been modified since the last save
 	vim.cmd("silent update")
@@ -169,10 +161,6 @@ vim.keymap.set("n", "zk", function()
 	vim.cmd("normal! zz") -- center the cursor line on screen
 end, { desc = "[P]Fold all headings level 2 or above" })
 
--- HACK: Fold markdown headings in Neovim with a keymap
--- https://youtu.be/EYczZLNEnIY
---
--- Keymap for folding markdown headings of level 3 or above
 vim.keymap.set("n", "zl", function()
 	-- "Update" saves only if the buffer has been modified since the last save
 	vim.cmd("silent update")
@@ -185,10 +173,6 @@ vim.keymap.set("n", "zl", function()
 	vim.cmd("normal! zz") -- center the cursor line on screen
 end, { desc = "[P]Fold all headings level 3 or above" })
 
--- HACK: Fold markdown headings in Neovim with a keymap
--- https://youtu.be/EYczZLNEnIY
---
--- Keymap for folding markdown headings of level 4 or above
 vim.keymap.set("n", "z;", function()
 	-- "Update" saves only if the buffer has been modified since the last save
 	vim.cmd("silent update")
@@ -201,30 +185,6 @@ vim.keymap.set("n", "z;", function()
 	vim.cmd("normal! zz") -- center the cursor line on screen
 end, { desc = "[P]Fold all headings level 4 or above" })
 
--- HACK: Fold markdown headings in Neovim with a keymap
--- https://youtu.be/EYczZLNEnIY
---
--- Use <CR> to fold when in normal mode
--- To see help about folds use `:help fold`
-vim.keymap.set("n", "<CR>", function()
-	-- Get the current line number
-	local line = vim.fn.line(".")
-	-- Get the fold level of the current line
-	local foldlevel = vim.fn.foldlevel(line)
-	if foldlevel == 0 then
-		vim.notify("No fold found", vim.log.levels.INFO)
-	else
-		vim.cmd("normal! za")
-		vim.cmd("normal! zz") -- center the cursor line on screen
-	end
-end, { desc = "[P]Toggle fold" })
-
--- HACK: Fold markdown headings in Neovim with a keymap
--- https://youtu.be/EYczZLNEnIY
---
--- Keymap for unfolding markdown headings of level 2 or above
--- Changed all the markdown folding and unfolding keymaps from <leader>mfj to
--- zj, zk, zl, z; and zu respectively lamw25wmal
 vim.keymap.set("n", "zu", function()
 	-- "Update" saves only if the buffer has been modified since the last save
 	vim.cmd("silent update")
@@ -235,11 +195,6 @@ vim.keymap.set("n", "zu", function()
 	vim.cmd("normal! zz") -- center the cursor line on screen
 end, { desc = "[P]Unfold all headings level 2 or above" })
 
--- HACK: Fold markdown headings in Neovim with a keymap
--- https://youtu.be/EYczZLNEnIY
---
--- gk jummps to the markdown heading above and then folds it
--- zi by default toggles folding, but I don't need it lamw25wmal
 vim.keymap.set("n", "zi", function()
 	-- "Update" saves only if the buffer has been modified since the last save
 	vim.cmd("silent update")
