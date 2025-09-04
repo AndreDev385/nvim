@@ -3,7 +3,7 @@ return {
 	lazy = false, -- load at start
 	priority = 1000, -- load first
 	config = function()
-		vim.cmd([[colorscheme atelier-dune]])
+		vim.cmd([[colorscheme ayu-dark]])
 		vim.o.background = "dark"
 		vim.cmd([[hi Normal ctermbg=NONE]])
 		-- Less visible window separator

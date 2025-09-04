@@ -54,6 +54,6 @@ return {
 			end,
 		})
 
-		vim.cmd.colorscheme("catppuccin")
+		--vim.cmd.colorscheme("catppuccin")
 	end,
 }

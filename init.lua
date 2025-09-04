@@ -20,7 +20,7 @@ vim.diagnostic.config({
 	signs = {
 		active = true,
 		text = {
-			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.ERROR] = "",
 			[vim.diagnostic.severity.WARN] = "",
 			[vim.diagnostic.severity.HINT] = "󰟃",
 			[vim.diagnostic.severity.INFO] = "",
@@ -29,7 +29,10 @@ vim.diagnostic.config({
 	virtual_text = true,
 	virtual_lines = false,
 	float = {
-		border = "single",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = " ",
 		format = function(diagnostic)
 			return string.format(
 				"%s (%s) [%s]",
@@ -47,4 +50,3 @@ require("lazy").setup({ import = "plugins" }, {
 
 require("config.keymaps")
 require("config.options")
-require("colors.colorscheme")

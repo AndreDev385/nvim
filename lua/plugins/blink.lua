@@ -94,7 +94,8 @@ return {
 				auto_show = true,
 				auto_show_delay_ms = 250,
 				window = {
-					border = "single",
+					border = "rounded",
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
 				},
 			},
 		}
@@ -104,7 +105,13 @@ return {
 			completion = { menu = { auto_show = true } },
 		}
 
-		opts.signature = { enabled = true }
+		opts.signature = {
+			enabled = true,
+			window = {
+				border = "rounded",
+				winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+			},
+		}
 
 		opts.snippets = {
 			preset = "luasnip",
@@ -117,6 +124,13 @@ return {
 		}
 
 		opts.fuzzy = { implementation = "prefer_rust_with_warning" }
+
+		-- Add highlight groups for better visual integration with ayu-dark
+		vim.api.nvim_set_hl(0, "BlinkCmpMenu", { link = "Pmenu" })
+		vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "FloatBorder" })
+		vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { link = "PmenuSel" })
+		vim.api.nvim_set_hl(0, "BlinkCmpLabel", { link = "Pmenu" })
+		vim.api.nvim_set_hl(0, "BlinkCmpLabelMatch", { link = "PmenuSel" })
 
 		return opts
 	end,
