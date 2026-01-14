@@ -21,16 +21,13 @@ set("n", "<leader><CR>", "<cmd>source %<CR>", { desc = "Execute the current file
 set("v", "J", ":m '>+1<CR>gv=gv")
 set("v", "K", ":m '<-2<CR>gv=gv")
 
-set("n", "]d", vim.diagnostic.goto_next)
-set("n", "[d", vim.diagnostic.goto_prev)
-
 -- quick fix list
 set("n", "<leader>qj", "<cmd>cnext<CR>")
 set("n", "<leader>qk", "<cmd>cprev<CR>")
 set("n", "<leader>qo", "<cmd>copen<CR>")
 set("n", "<leader>qc", "<cmd>cclose<CR>")
 
-set("n", "<leader>gs", vim.cmd.Git)
+set("n", "<space>gs", vim.cmd.Git)
 set("n", "<leader>gvd", vim.cmd.Gvdiffsplit)
 set("n", "<leader>f", vim.lsp.buf.format)
 set("n", "<leader>w", "<cmd>:w<CR>")

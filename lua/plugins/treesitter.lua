@@ -32,6 +32,7 @@ return {
 				"templ",
 				"markdown",
 				"markdown_inline",
+				"scala",
 			},
 			folds = {
 				enable = true, -- Habilita el plegado basado en treesitter

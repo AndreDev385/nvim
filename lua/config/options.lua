@@ -1,72 +1,48 @@
-local opt = vim.opt
-
-vim.g.autoformat = false
-opt.inccommand = "split"
-opt.guicursor = ""
-
-opt.smartcase = true
-opt.ignorecase = true
-opt.wrap = false
-opt.vb = true
-
-opt.signcolumn = "yes"
-opt.clipboard = "unnamedplus"
-
--- current line number
-opt.nu = true
-opt.rnu = true
-
--- indentation
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.tabstop = 4
-opt.expandtab = false
-
-opt.scrolloff = 2
-opt.smartindent = true
+vim.g.mapleader = " "
+vim.o.number = true
+vim.o.numberwidth = 1
+vim.o.signcolumn = "yes"
+vim.opt.smartindent = true
+vim.o.wrap = true
+vim.opt.wrap = true
 
 -- folds
 vim.o.foldlevel = 99
-vim.o.foldcolumn = "1"
-vim.wo.foldnestmax = 1
-vim.wo.foldminlines = 1
+vim.o.foldmethod = "expr"
 vim.o.foldenable = true
-vim.o.foldlevelstart = 99
-vim.o.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g')]]
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldnestmax = 4
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g')]]
 
-opt.swapfile = false
-opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-opt.undofile = true
+-- search
+vim.opt.hls = false
+vim.opt.incsearch = true
 
-opt.wildmode = "list:longest"
-opt.wildignore = ".hg,.svn,*~,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o,vendor,dist,_site"
+-- undo dir
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
--- hightlight coincidences on search
-opt.hlsearch = true
-opt.incsearch = true
+-- indentation
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
+vim.opt.expandtab = false
+vim.opt.scrolloff = 4
 
--- background color scheme
-opt.termguicolors = true
-opt.background = "dark"
+vim.opt.updatetime = 50
+vim.opt.autoread = true
 
-opt.colorcolumn = "80"
-opt.listchars = "tab:> ,nbsp:¬,extends:»,precedes:«,trail:•"
-opt.cursorline = true
+vim.opt.wildmode = "list:longest"
+vim.opt.wildignore = ".hg,.svn,*~,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o,vendor,dist,_site"
 
-vim.api.nvim_create_autocmd("Filetype", { pattern = "rust", command = "set colorcolumn=100" })
-
-opt.isfname:append("@-@")
-opt.updatetime = 50
-opt.splitright = true
-opt.splitbelow = true
+vim.opt.listchars = "tab:> ,nbsp:¬,extends:»,precedes:«,trail:•"
 
 -- spelling
-opt.spelllang = "en_us,es"
-opt.spell = true
+vim.opt.spelllang = "en_us,es"
+vim.opt.spell = true
 
 vim.filetype.add({
 	extension = {
@@ -75,8 +51,12 @@ vim.filetype.add({
 	},
 })
 
-vim.cmd([[
-    set notimeout
-    set encoding=UTF-8
-    set conceallevel=2
-]])
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+	pattern = "*",
+	command = "checktime"
+})
+
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "FocusGained" }, {
+	pattern = "*",
+	command = "checktime"
+})

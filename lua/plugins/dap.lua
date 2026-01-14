@@ -102,6 +102,14 @@ return {
 					buildTarget = "root",
 				},
 			}
+
+			dap.configurations.metals = {
+				runType = "run",
+				args = { "foo", "bar" },
+				jvmOptions = { "-Dpropert=123" },
+				env = { RETRY = "TRUE" },
+				envFile = ".env",
+			}
 		end,
 		keys = {
 			{

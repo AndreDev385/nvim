@@ -123,6 +123,20 @@ return {
 			),
 		}
 
+		local scala_snippets = {
+			s(
+				{ trig = "main", name = "main function" },
+				fmt(
+					[[
+				def main(args: Array[String]): Unit = {{
+					{}
+				}}
+			]],
+					{ i(1, "code") }
+				)
+			),
+		}
+
 		ls.add_snippets("javascript", javascript_snippets)
 		ls.add_snippets("typescript", javascript_snippets)
 		ls.add_snippets("javascriptreact", javascript_snippets)
@@ -130,6 +144,7 @@ return {
 		ls.add_snippets("javascriptreact", react_snippets)
 		ls.add_snippets("typescriptreact", react_snippets)
 		ls.add_snippets("go", go_snippets)
+		ls.add_snippets("scala", scala_snippets)
 
 		return opts
 	end,

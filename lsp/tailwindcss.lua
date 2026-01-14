@@ -4,7 +4,6 @@
 --- Tailwind CSS Language Server can be installed via npm:
 ---
 --- npm install -g @tailwindcss/language-server
-
 ---@type vim.lsp.Config
 return {
 	cmd = { "tailwindcss-language-server", "--stdio" },
@@ -85,6 +84,7 @@ return {
 				"ngClass",
 			},
 			includeLanguages = {
+				astro = "html",
 				eelixir = "html-eex",
 				elixir = "phoenix-heex",
 				eruby = "erb",
@@ -142,19 +142,30 @@ return {
 		local bufdir = vim.fn.fnamemodify(bufname, ":p:h")
 		local project_root = nil
 
-		-- Search upward for root files
-		for _, file in ipairs(root_files) do
-			local root = vim.fn.findfile(file, bufdir .. ";")
-			if root ~= "" then
-				project_root = vim.fn.fnamemodify(root, ":p:h")
-				break
+		-- Special handling for Astro files
+		if string.match(bufname, "%.astro$") then
+			-- For Astro files, look for project markers in the work directory
+			local workdir = "/home/andre/work/adcendia"
+			if vim.fn.isdirectory(workdir) == 1 then
+				project_root = workdir
 			end
+		end
 
-			-- Also check for directories (for .git directory)
-			root = vim.fn.finddir(file, bufdir .. ";")
-			if root ~= "" then
-				project_root = vim.fn.fnamemodify(root, ":p:h")
-				break
+		-- If we haven't found a project root yet, search upward for root files
+		if not project_root then
+			for _, file in ipairs(root_files) do
+				local root = vim.fn.findfile(file, bufdir .. ";")
+				if root ~= "" then
+					project_root = vim.fn.fnamemodify(root, ":p:h")
+					break
+				end
+
+				-- Also check for directories (for .git directory)
+				root = vim.fn.finddir(file, bufdir .. ";")
+				if root ~= "" then
+					project_root = vim.fn.fnamemodify(root, ":p:h")
+					break
+				end
 			end
 		end
 

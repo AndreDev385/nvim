@@ -3,8 +3,6 @@ return {
 	"tpope/vim-rhubarb",
 	"tpope/vim-sleuth",
 	config = function()
-		vim.keymap.set("n", "<leader>gs", vim.cmd("vert Git"))
-
 		local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup("ThePrimeagen_Fugitive", {})
 
 		local autocmd = vim.api.nvim_create_autocmd

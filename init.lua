@@ -1,6 +1,3 @@
-require("colors.atelier-dune")
-vim.g.mapleader = " "
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
@@ -28,25 +25,11 @@ vim.diagnostic.config({
 	},
 	virtual_text = true,
 	virtual_lines = false,
-	float = {
-		border = "rounded",
-		source = "always",
-		header = "",
-		prefix = " ",
-		format = function(diagnostic)
-			return string.format(
-				"%s (%s) [%s]",
-				diagnostic.message,
-				diagnostic.source,
-				diagnostic.code or diagnostic.user_data.lsp.code
-			)
-		end,
-	},
 })
+
+require("config.options")
+require("config.keymaps")
 
 require("lazy").setup({ import = "plugins" }, {
 	change_detection = { notify = false },
 })
-
-require("config.keymaps")
-require("config.options")

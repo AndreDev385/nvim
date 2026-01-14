@@ -22,6 +22,7 @@ vim.lsp.enable({
 	"rust_analyzer",
 	"sqlls",
 	"tailwindcss",
+	"dartls",
 	"ts_ls",
 	"zls",
 })

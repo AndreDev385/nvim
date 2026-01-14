@@ -11,7 +11,30 @@ return {
 	cmd = { "astro-ls", "--stdio" },
 	filetypes = { "astro" },
 	init_options = {
-		typescript = {},
+		typescript = {
+			tsdk = "/home/andre/.volta/tools/image/node/22.15.0/lib/node_modules/typescript/lib"
+		},
+	},
+	settings = {
+		astro = {
+			typescript = {
+				tsdk = "/home/andre/.volta/tools/image/node/22.15.0/lib/node_modules/typescript/lib"
+			},
+			languageFeatures = {
+				codeActions = true,
+				completions = true,
+				definitions = true,
+				diagnostics = true,
+				documentHighlights = true,
+				documentLinks = true,
+				documentSymbols = true,
+				hover = true,
+				inlayHints = true,
+				rename = true,
+				signatureHelp = true,
+				workspaceSymbol = true,
+			},
+		},
 	},
 	root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
 	before_init = function(_, config)
