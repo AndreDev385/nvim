@@ -4,7 +4,7 @@ return {
 	enabled = true,
 	---@module 'render-markdown'
 	opts = {
-		completions = { blink = { enabled = true } },
+		completions = { cmp = { enabled = true } },
 		bullet = {
 			enabled = true,
 		},

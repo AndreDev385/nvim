@@ -5,6 +5,7 @@ vim.o.signcolumn = "yes"
 vim.opt.smartindent = true
 vim.o.wrap = true
 vim.opt.wrap = true
+vim.wo.relativenumber = true
 
 -- folds
 vim.o.foldlevel = 99
@@ -50,6 +51,8 @@ vim.filetype.add({
 		templ = "templ",
 	},
 })
+
+vim.opt.clipboard = "unnamedplus"
 
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 	pattern = "*",

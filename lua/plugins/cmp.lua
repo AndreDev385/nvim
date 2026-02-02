@@ -7,13 +7,14 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-git",
+		"hrsh7th/cmp-emoji",
 		-- autopairs
 		"windwp/nvim-autopairs",
 		-- snippets
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 	},
-	event = "VeryLazy",
+	event = "InsertEnter",
 	main = "config.completion",
 	opts = function(_, opts)
 		opts.sources = opts.sources or {}
@@ -23,6 +24,6 @@ return {
 		})
 	end,
 	config = function()
-		require("cmp").setup({})
+		require("config.completion").setup()
 	end,
 }
